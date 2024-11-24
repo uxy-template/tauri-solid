@@ -1,0 +1,15 @@
+{
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "parser": "markdown",
+        "proseWrap": "always",
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false
+      }
+    }
+  ]
+}
