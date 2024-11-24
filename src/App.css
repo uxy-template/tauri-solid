@@ -1,0 +1,439 @@
+/* @font-face {
+  src: url("@assets/fonts/JetBrainsMono-Regular-2.ttf");
+  font-family: "EnFont";
+}
+
+@font-face {
+  src: url("@assets/fonts/SourceHanSerifCN-Bold-2.otf");
+  font-family: "CnFont";
+} */
+
+html,
+body,
+#root {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:root {
+  --font-family-en: 'EnFont';
+  --font-family-cn: 'CnFont';
+  --light-color-container: #f7f8fa;
+  --light-color-component: #ffffff;
+  --light-color-title: #ebecf0;
+  --light-color-text: #1c1b1d;
+  --light-color-border: #ebecf0;
+  --light-color-fill: #f7f8fa;
+  --light-color-hover: #dbdcde;
+  --dark-color-container: #2b2d30;
+  --dark-color-component: #1e1f22;
+  --dark-color-title: #3c3f41;
+  --dark-color-text: #ced0d6;
+  --dark-color-border: #1e1f22;
+  --dark-color-fill: #f7f8fa;
+  --dark-color-hover: #4b4c4f;
+}
+
+:root[theme='light'] {
+  --color-container: var(--light-color-container);
+  --color-component: var(--light-color-component);
+  --color-title: var(--light-color-title);
+  --color-text: var(--light-color-text);
+  --color-border: var(--light-color-border);
+  --color-fill: var(--light-color-fill);
+  --color-hover: var(--light-color-hover);
+}
+
+:root[theme='dark'] {
+  --color-container: var(--dark-color-container);
+  --color-component: var(--dark-color-component);
+  --color-title: var(--dark-color-title);
+  --color-text: var(--dark-color-text);
+  --color-border: var(--dark-color-border);
+  --color-fill: var(--dark-color-fill);
+  --color-hover: var(--dark-color-hover);
+}
+
+div.uxy-tauri-solid-application {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 30px calc(100% - 62px) 30px;
+  grid-template-rows: 30px calc(100% - 61px) 30px;
+  grid-template-areas: 'title title title' 'left center right' 'status status status';
+  background-color: var(--color-container, #2b2d30);
+  color: var(--color-text, #ced0d6);
+  outline: none;
+}
+
+div.uxy-tauri-solid-application > header.title {
+  padding-left: 5px;
+  grid-area: title;
+  background-color: var(--color-title, #3c3f41);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.icon {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 5px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.icon > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+div.uxy-tauri-solid-application > header.title > div.left {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 5px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.left > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.left > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > header.title > div.center {
+  flex-grow: 1;
+  cursor: move;
+  user-select: none;
+}
+
+div.uxy-tauri-solid-application > header.title > div.right {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 5px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.right > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > header.title > div.right > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > header.title > div.action {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: stretch;
+}
+
+div.uxy-tauri-solid-application > header.title > div.action > div {
+  width: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+div.uxy-tauri-solid-application > header.title > div.action > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application
+  > header.title
+  > div.action
+  > div:nth-of-type(3):hover {
+  background-color: red;
+}
+
+div.uxy-tauri-solid-application > aside.left {
+  grid-area: left;
+  border-right: 1px var(--color-border, #1e1f22) solid;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.top {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.top > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.top > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > aside.left > div.center {
+  flex-grow: 1;
+  user-select: none;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.bottom > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > aside.left > div.bottom > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > aside.right {
+  grid-area: right;
+  border-left: 1px var(--color-border, #1e1f22) solid;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.top {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.top > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.top > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > aside.right > div.center {
+  flex-grow: 1;
+  user-select: none;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.bottom {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.bottom > div {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-height: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > aside.right > div.bottom > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > main.center {
+  grid-area: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+div.uxy-tauri-solid-application > main.center > div.top {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+div.uxy-tauri-solid-application > main.center > div.top > div.left {
+  width: 20%;
+  border-right: 1px var(--color-border, #1e1f22) solid;
+  position: relative;
+}
+
+div.uxy-tauri-solid-application div.splitter {
+  opacity: 0;
+  position: absolute;
+  content: '';
+  z-index: calc(1 / 0);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+div.uxy-tauri-solid-application div.splitter:hover {
+  opacity: 1;
+  background-color: var(--color-hover, #424547);
+  border-radius: 3px;
+}
+
+div.uxy-tauri-solid-application
+  > main.center
+  > div.top
+  > div.left
+  > div.splitter {
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+}
+
+div.uxy-tauri-solid-application > main.center > div.top > div.right {
+  width: 20%;
+  border-left: 1px var(--color-border, #1e1f22) solid;
+  position: relative;
+}
+
+div.uxy-tauri-solid-application
+  > main.center
+  > div.top
+  > div.right
+  > div.splitter {
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+}
+
+div.uxy-tauri-solid-application > main.center > div.top > div.center {
+  flex-grow: 1;
+}
+
+div.uxy-tauri-solid-application > main.center > div.bottom {
+  height: 30%;
+  border-top: 1px var(--color-border, #1e1f22) solid;
+  position: relative;
+}
+
+div.uxy-tauri-solid-application > main.center > div.bottom > div.splitter {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+div.uxy-tauri-solid-application > footer.status {
+  grid-area: status;
+  border-top: 1px var(--color-border, #1e1f22) solid;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.left {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.left > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.left > div:hover {
+  background-color: var(--color-hover, #424547);
+}
+
+div.uxy-tauri-solid-application > footer.status > div.center {
+  flex-grow: 1;
+  user-select: none;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.right {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 10px;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.right > div {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  min-width: 30px;
+  border-radius: 5px;
+}
+
+div.uxy-tauri-solid-application > footer.status > div.right > div:hover {
+  background-color: var(--color-hover, #424547);
+}
